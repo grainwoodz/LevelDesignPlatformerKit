@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgce4me114ucg"]
+
+[ext_resource type="PackedScene" uid="uid://bn0iedr5b0xbv" path="res://models/core_models/platform-large.glb" id="1_a1kev"]
+[ext_resource type="PackedScene" uid="uid://g73m8k0j7lyo" path="res://objects/button.tscn" id="2_iy61k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_plohc"]
+size = Vector3(4.94006, 0.491211, 5.0083)
+
+[node name="platform-large" instance=ExtResource("1_a1kev")]
+
+[node name="Forward" parent="." index="1" instance=ExtResource("2_iy61k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0185196, 0.365315, -1.49635)
+
+[node name="Left" parent="." index="2" instance=ExtResource("2_iy61k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.41427, 0.360187, -0.0252191)
+
+[node name="Right" parent="." index="3" instance=ExtResource("2_iy61k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35752, 0.360187, -0.0252191)
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="." index="4"]
+sync_to_physics = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00799561, 0.254395, 0.00170898)
+shape = SubResource("BoxShape3D_plohc")

@@ -21,7 +21,7 @@ func _ready() -> void:
 		else:
 			remote_transform_3d.remote_path = object_to_move.get_path()
 			object_to_move.set_deferred("position", Vector3.ZERO)
-			global_position = Vector3.ZERO
+			#global_position = original_object_pos
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,8 +36,8 @@ func _process(delta: float) -> void:
 
 			path_follow_3d.progress += (delta*movement_speed*direction)
 
-	if Engine.is_editor_hint() and global_position != Vector3.ZERO:
-		global_position = Vector3.ZERO
+	if Engine.is_editor_hint() and global_position == Vector3.ZERO:
+		global_position = original_object_pos
 
 
 func receive_input(on : bool) -> void:

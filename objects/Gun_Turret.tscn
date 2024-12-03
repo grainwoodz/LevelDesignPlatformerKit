@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://1v026c3uk23n"]
+
+[ext_resource type="PackedScene" uid="uid://bn0iedr5b0xbv" path="res://models/core_models/platform-large.glb" id="1_5mna3"]
+[ext_resource type="PackedScene" uid="uid://g73m8k0j7lyo" path="res://objects/button.tscn" id="2_shf1e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gnu1x"]
+size = Vector3(5, 0.5, 5)
+
+[node name="Gun_Platform" instance=ExtResource("1_5mna3")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_gnu1x")
+
+[node name="Rotate" parent="." index="2" instance=ExtResource("2_shf1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00168908, 0.361971, -1.46393)
+
+[node name="button2" parent="." index="3" instance=ExtResource("2_shf1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28591, 0.361971, -0.0103563)
+
+[node name="button3" parent="." index="4" instance=ExtResource("2_shf1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2402, 0.361971, -0.0244688)
