@@ -10,6 +10,7 @@ size = Vector3(4.94006, 0.491211, 5.0083)
 
 [node name="Forward" parent="." index="1" instance=ExtResource("2_iy61k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0185196, 0.365315, -1.49635)
+visible = false
 
 [node name="Left" parent="." index="2" instance=ExtResource("2_iy61k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.41427, 0.360187, -0.0252191)

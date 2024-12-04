@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cnes0torljvf1"]
+[gd_scene load_steps=41 format=3 uid="uid://cnes0torljvf1"]
 
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="1_p84lb"]
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_qbhlc"]
@@ -17,10 +17,15 @@
 [ext_resource type="PackedScene" uid="uid://1hx4wcwosemd" path="res://models/props/block-moving-large.glb" id="10_2ebp5"]
 [ext_resource type="PackedScene" uid="uid://ct3jqgtvmr86q" path="res://models/props/block-grass-large.glb" id="16_y4nhb"]
 [ext_resource type="PackedScene" uid="uid://dgce4me114ucg" path="res://scenes/SpaceShip.tscn" id="17_g1n6c"]
+[ext_resource type="Script" path="res://MovingPlatformCheating.gd" id="17_ht2ni"]
+[ext_resource type="PackedScene" uid="uid://cxea8lmw7cy1l" path="res://objects/player_kill_volume.tscn" id="17_yigou"]
 [ext_resource type="PackedScene" uid="uid://rjh4ifidqrfp" path="res://objects/platform_medium.tscn" id="18_feuno"]
+[ext_resource type="PackedScene" uid="uid://bpharv43ulngb" path="res://objects/platform_moving.tscn" id="19_4kwwr"]
 [ext_resource type="PackedScene" uid="uid://0v6t454aaexr" path="res://objects/door.tscn" id="19_sfbfg"]
 [ext_resource type="PackedScene" uid="uid://dbr3dh46cbskt" path="res://objects/wall.tscn" id="20_t0t1o"]
 [ext_resource type="PackedScene" uid="uid://c8up71en5djgm" path="res://objects/platform_falling.tscn" id="21_t5njj"]
+[ext_resource type="PackedScene" uid="uid://cyvet7kb6y80r" path="res://objects/checkpoint.tscn" id="23_lqq3i"]
+[ext_resource type="PackedScene" uid="uid://dmequtx2oso1f" path="res://models/props/rocks.glb" id="26_504pe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fqjlk"]
 font = ExtResource("8_vtp5b")
@@ -46,7 +51,7 @@ dof_blur_far_distance = 0.01
 
 [sub_resource type="Curve3D" id="Curve3D_sdi4r"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 9.23216, 0.131432, 0.593766, 0, 0, 0, 0, 0, 0, -21.3081, 0.110918, -0.383813),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 9.23216, 0.131432, 0.593766, 0, 0, 0, 0, 0, 0, -47.3809, 0.110918, -1.26434),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -69,19 +74,19 @@ size = Vector3(1, 0.504028, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_y6m0e"]
 size = Vector3(1.99365, 1.50244, 2.00354)
 
-[sub_resource type="Curve3D" id="Curve3D_vci25"]
+[sub_resource type="Curve3D" id="Curve3D_6t7kb"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1.94724, -0.856532, -1.17026, 0, 0, 0, 0, 0, 0, -13.9612, -3.98125, -2172.5),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -129.676, 34.014, 0.363091, 1.84961, 963.213, -9.40387, -1.84961, -963.213, 9.40387, 117.024, -939.518, -940.313),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
 
-[sub_resource type="Curve3D" id="Curve3D_6t7kb"]
+[sub_resource type="Curve3D" id="Curve3D_vci25"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.031718, 0.380311, -0.117151, 0, 0, 0, 0, 0, 0, -0.028141, 0.443926, -1758.17),
-"tilts": PackedFloat32Array(0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 22.659, 99.1385, 4.85388, 0, 0, 0, 0, 0, 0, 22.6543, 99.1156, 25.6562, 0, 0, 0, 0, 0, 0, 18.7428, 103.907, 25.6144),
+"tilts": PackedFloat32Array(0, 0, 0)
 }
-point_count = 2
+point_count = 3
 
 [sub_resource type="Curve3D" id="Curve3D_sc7aw"]
 _data = {
@@ -214,7 +219,7 @@ shadow_enabled = true
 shadow_opacity = 0.75
 
 [node name="Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("1_p84lb")]
-transform = Transform3D(-0.436802, 0, -0.899558, 0, 1, 0, 0.899558, 0, -0.436802, -130.738, 35.6308, -50.3023)
+transform = Transform3D(-0.436802, 0, -0.899558, 0, 1, 0, 0.899558, 0, -0.436802, -127.495, 36.5561, -56.788)
 view = NodePath("../View")
 
 [node name="FastCar" parent="." instance=ExtResource("3_s1xwb")]
@@ -296,7 +301,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.247986, 0)
 shape = SubResource("BoxShape3D_c74ko")
 
 [node name="Terrain" parent="." instance=ExtResource("16_y4nhb")]
-transform = Transform3D(663.6, 0, 0, 0, 663.6, 0, 0, 0, 663.6, -143.946, -666.185, -6.48253)
+transform = Transform3D(663.6, 0, 0, 0, 663.6, 0, 0, 0, 663.6, -143.946, -741.372, -6.48253)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Terrain"]
 
@@ -304,53 +309,66 @@ transform = Transform3D(663.6, 0, 0, 0, 663.6, 0, 0, 0, 663.6, -143.946, -666.18
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00366211, 0.251221, -0.00201419)
 shape = SubResource("BoxShape3D_y6m0e")
 
+[node name="Space_Forward" parent="." node_paths=PackedStringArray("object_to_move") instance=ExtResource("6_cvfi2")]
+process_mode = 1
+physics_interpolation_mode = 1
+auto_translate_mode = 1
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 36.6613, -114.699)
+curve = SubResource("Curve3D_6t7kb")
+script = ExtResource("17_ht2ni")
+object_to_move = NodePath("../RocketShip")
+movement_speed = 10.0
+is_on_from_start = false
+ping_pong = true
+
+[node name="Space_Right" parent="." node_paths=PackedStringArray("object_to_move") instance=ExtResource("6_cvfi2")]
+process_mode = 1
+physics_interpolation_mode = 1
+auto_translate_mode = 1
+transform = Transform3D(-4.37114e-08, 0, -1, -1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1.91069e-15, 0, -28.0977, -99.7219)
+curve = SubResource("Curve3D_vci25")
+script = ExtResource("17_ht2ni")
+object_to_move = NodePath("../RocketShip")
+movement_speed = 4.0
+is_on_from_start = false
+
+[node name="Space_Left" parent="." node_paths=PackedStringArray("object_to_move") instance=ExtResource("6_cvfi2")]
+process_mode = 1
+physics_interpolation_mode = 1
+auto_translate_mode = 1
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -130.628, 35.0373, -66.2367)
+curve = SubResource("Curve3D_sc7aw")
+script = ExtResource("17_ht2ni")
+object_to_move = NodePath("../RocketShip")
+movement_speed = 4.0
+is_on_from_start = false
+
 [node name="RocketShip" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.382, 35.7945, -59.3938)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -129.592, 35.763, -86.0897)
 top_level = true
 
-[node name="Space_Right" parent="RocketShip" node_paths=PackedStringArray("object_to_move") instance=ExtResource("6_cvfi2")]
-process_mode = 1
-physics_interpolation_mode = 1
-auto_translate_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.38454)
-curve = SubResource("Curve3D_vci25")
-object_to_move = NodePath("../SpaceShipHolderNode")
-movement_speed = 2.0
-is_on_from_start = false
+[node name="SpaceShipHolder" type="Node3D" parent="RocketShip"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.602325, 0, -2.34641)
+visible = false
 
-[node name="SpaceShipHolderNode" type="Node3D" parent="RocketShip"]
+[node name="SpaceShip" parent="RocketShip/SpaceShipHolder" instance=ExtResource("17_g1n6c")]
 
-[node name="Space_Forward" parent="RocketShip/SpaceShipHolderNode" node_paths=PackedStringArray("object_to_move") instance=ExtResource("6_cvfi2")]
-process_mode = 1
-physics_interpolation_mode = 1
-auto_translate_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.38454)
-curve = SubResource("Curve3D_6t7kb")
-object_to_move = NodePath("../SpaceShipHolder")
-movement_speed = 2.0
-is_on_from_start = false
+[node name="Forward" parent="RocketShip/SpaceShipHolder/SpaceShip" index="1" node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0185242, 2.62021, -1.49635)
+target = NodePath("../../../../Space_Forward")
 
-[node name="SpaceShipHolder" type="Node3D" parent="RocketShip/SpaceShipHolderNode"]
+[node name="Left" parent="RocketShip/SpaceShipHolder/SpaceShip" index="2" node_paths=PackedStringArray("target")]
+target = NodePath("../../../../Space_Left")
 
-[node name="Space_Left" parent="RocketShip/SpaceShipHolderNode/SpaceShipHolder" node_paths=PackedStringArray("object_to_move") instance=ExtResource("6_cvfi2")]
-process_mode = 1
-physics_interpolation_mode = 1
-auto_translate_mode = 1
-curve = SubResource("Curve3D_sc7aw")
-object_to_move = NodePath("../SpaceShip")
-movement_speed = 2.0
-is_on_from_start = false
-
-[node name="SpaceShip" parent="RocketShip/SpaceShipHolderNode/SpaceShipHolder" instance=ExtResource("17_g1n6c")]
-
-[node name="Forward" parent="RocketShip/SpaceShipHolderNode/SpaceShipHolder/SpaceShip" index="1" node_paths=PackedStringArray("target")]
-target = NodePath("../../../Space_Forward")
-
-[node name="Left" parent="RocketShip/SpaceShipHolderNode/SpaceShipHolder/SpaceShip" index="2" node_paths=PackedStringArray("target")]
-target = NodePath("../../Space_Left")
-
-[node name="Right" parent="RocketShip/SpaceShipHolderNode/SpaceShipHolder/SpaceShip" index="3" node_paths=PackedStringArray("target")]
+[node name="Right" parent="RocketShip/SpaceShipHolder/SpaceShip" index="3" node_paths=PackedStringArray("target")]
 target = NodePath("../../../../Space_Right")
+
+[node name="platform-large" parent="RocketShip" instance=ExtResource("3_jp2py")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.630249, 3.00283, 0.617863)
+
+[node name="button" parent="RocketShip" node_paths=PackedStringArray("target") instance=ExtResource("4_t6b34")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.644272, 3.46273, 0.117863)
+target = NodePath("../../Space_Forward")
 
 [node name="Shuttle" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -146.16, 33.918, -52.0241)
@@ -358,6 +376,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -146.16, 33.918, -52.0241)
 [node name="HangarStairs" type="Node3D" parent="."]
 
 [node name="Platforms 1" type="Node3D" parent="HangarStairs"]
+
+[node name="Space_Right" parent="HangarStairs/Platforms 1" node_paths=PackedStringArray("object_to_move") instance=ExtResource("6_cvfi2")]
+process_mode = 1
+physics_interpolation_mode = 1
+auto_translate_mode = 1
+transform = Transform3D(4.37114e-08, -1, 4.37114e-08, 8.74228e-08, 4.37114e-08, 1, -1, -4.37114e-08, 8.74228e-08, 0, 0, 0)
+curve = SubResource("Curve3D_vci25")
+object_to_move = NodePath("../Elevator2")
+movement_speed = 4.0
+is_on_from_start = false
+ping_pong = true
+
+[node name="Elevator2" parent="HangarStairs/Platforms 1" instance=ExtResource("19_4kwwr")]
+transform = Transform3D(2.13052, 0, 0, 0, 1, 0, 0, 0, 2.13052, -99.1954, 4.35968, -22.6871)
+
+[node name="button" parent="HangarStairs/Platforms 1/Elevator2" node_paths=PackedStringArray("target") instance=ExtResource("4_t6b34")]
+transform = Transform3D(0.46937, 0, 0, 0, 1, 0, 0, 0, 0.46937, -0.0262146, 0.475618, -0.0192099)
+target = NodePath("../../Space_Right")
 
 [node name="platform-medium4" parent="HangarStairs/Platforms 1" instance=ExtResource("18_feuno")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.537, 0.326203, -7.83036)
@@ -383,22 +419,6 @@ transform = Transform3D(0.0202923, 0, -2.06138, 0, 2.06148, 0, 2.06138, 0, 0.020
 [node name="DoorButton" parent="HangarStairs/Platforms 1/FirstDoor" node_paths=PackedStringArray("target") instance=ExtResource("4_t6b34")]
 transform = Transform3D(-0.00223512, 0, -0.485084, 0, 0.485089, 0, 0.485084, 0, -0.00223512, 0.947396, -0.0233955, -1.37257)
 target = NodePath("..")
-
-[node name="Elevator" parent="HangarStairs/Platforms 1" node_paths=PackedStringArray("object_to_move") instance=ExtResource("6_cvfi2")]
-process_mode = 1
-physics_interpolation_mode = 1
-auto_translate_mode = 1
-curve = SubResource("Curve3D_vci25")
-object_to_move = NodePath("../ElevatorPlatform")
-movement_speed = 2.0
-is_on_from_start = false
-
-[node name="ElevatorPlatform" parent="HangarStairs/Platforms 1" instance=ExtResource("3_jp2py")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.538, 4.30323, -23.1479)
-
-[node name="ElevatorButton" parent="HangarStairs/Platforms 1/ElevatorPlatform" node_paths=PackedStringArray("target") instance=ExtResource("4_t6b34")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.910835, 0.38166, -0.0477753)
-target = NodePath("../../Elevator")
 
 [node name="wall" parent="HangarStairs/Platforms 1" instance=ExtResource("20_t0t1o")]
 transform = Transform3D(1, 0, 0, 0, 3.9395, 0, 0, 0, 5.00368, -110.335, 25.1664, -19.9348)
@@ -444,6 +464,40 @@ transform = Transform3D(1.67074, 0, 0, 0, 1.67074, 0, 0, 0, 1.67074, -118.991, 3
 [node name="platform9" parent="HangarStairs/Platforms 2" instance=ExtResource("5_ghlg0")]
 transform = Transform3D(1.67074, 0, 0, 0, 1.67074, 0, 0, 0, 1.67074, -118.991, 33.1756, -37.4212)
 
+[node name="platform10" parent="HangarStairs/Platforms 2" instance=ExtResource("5_ghlg0")]
+transform = Transform3D(1.67074, 0, 0, 0, 1.67074, 0, 0, 0, 1.67074, -130.243, 34.4715, -62.6254)
+
+[node name="platform11" parent="HangarStairs/Platforms 2" instance=ExtResource("5_ghlg0")]
+transform = Transform3D(1.67074, 0, 0, 0, 1.67074, 0, 0, 0, 1.67074, -130.243, 34.4715, -66.0198)
+
+[node name="platform12" parent="HangarStairs/Platforms 2" instance=ExtResource("5_ghlg0")]
+transform = Transform3D(1.67074, 0, 0, 0, 1.67074, 0, 0, 0, 1.67074, -130.243, 34.4715, -69.4385)
+
+[node name="platform13" parent="HangarStairs/Platforms 2" instance=ExtResource("5_ghlg0")]
+transform = Transform3D(1.67074, 0, 0, 0, 1.67074, 0, 0, 0, 1.67074, -130.243, 34.4715, -72.8421)
+
+[node name="checkpoint" parent="HangarStairs/Platforms 2" instance=ExtResource("23_lqq3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.878, 4.92439, -17.1249)
+
+[node name="checkpoint2" parent="HangarStairs/Platforms 2" instance=ExtResource("23_lqq3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.32, 25.1665, -24.552)
+
+[node name="checkpoint3" parent="HangarStairs/Platforms 2" instance=ExtResource("23_lqq3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.015, 25.1665, -38.9154)
+
+[node name="checkpoint4" parent="HangarStairs/Platforms 2" instance=ExtResource("23_lqq3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.266, 35.2983, -59.0553)
+
+[node name="checkpoint5" parent="HangarStairs/Platforms 2" instance=ExtResource("23_lqq3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.602, 0.164952, -5.11109)
+
+[node name="player_kill_volume" parent="." instance=ExtResource("17_yigou")]
+
+[node name="Moon" type="Node3D" parent="."]
+
+[node name="rocks2" parent="Moon" instance=ExtResource("26_504pe")]
+transform = Transform3D(799.397, 0, 0, 0, 127.332, 0, 0, 0, 799.397, 231.53, 951.346, -1121.13)
+
 [connection signal="pressed" from="HUD/Control/PlayAgainButton" to="HUD" method="_on_play_again_button_pressed"]
 
-[editable path="RocketShip/SpaceShipHolderNode/SpaceShipHolder/SpaceShip"]
+[editable path="RocketShip/SpaceShipHolder/SpaceShip"]
