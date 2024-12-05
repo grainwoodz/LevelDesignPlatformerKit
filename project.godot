@@ -127,3 +127,18 @@ close_app={
 
 anti_aliasing/quality/screen_space_aa=1
 occlusion_culling/use_occlusion_culling=true
+
+[shader_globals]
+
+player_position={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
+}
+wind_direction={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
+}
+wind_intensity={
+"type": "float",
+"value": 0.0
+}
