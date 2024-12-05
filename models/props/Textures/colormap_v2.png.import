@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbx0p2ltqyuvl"
-path.s3tc="res://.godot/imported/platform-fortified.png-cbb7a51e17b405d43aea812c80446ed3.s3tc.ctex"
+uid="uid://t168msjmp5ld"
+path.s3tc="res://.godot/imported/colormap_v2.png-2626a6493de3ad75956d337c23e0fe82.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/props/platform-fortified.png"
-dest_files=["res://.godot/imported/platform-fortified.png-cbb7a51e17b405d43aea812c80446ed3.s3tc.ctex"]
+source_file="res://models/props/Textures/colormap_v2.png"
+dest_files=["res://.godot/imported/colormap_v2.png-2626a6493de3ad75956d337c23e0fe82.s3tc.ctex"]
 
 [params]
 
