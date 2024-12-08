@@ -169,3 +169,11 @@ func bounce_player(bounce_strength : float) -> void:
 	gravity = -bounce_strength
 	jump_double = true;
 	
+
+
+func _on_coin_collected() -> void:
+	pass # Replace with function body.
+
+
+func _on_reached_goal() -> void:
+	pass # Replace with function body.

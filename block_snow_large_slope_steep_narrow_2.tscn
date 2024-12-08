@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch0v5w4edf5y3"]
+
+[ext_resource type="PackedScene" uid="uid://1j2vehyatmn2" path="res://models/props/block-snow-large-slope-steep-narrow.glb" id="1_e3eww"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jdcxl"]
+size = Vector3(0.980408, 2.05478, 0.616335)
+
+[node name="block-snow-large-slope-steep-narrow2" instance=ExtResource("1_e3eww")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.504272, 0.863545, 0, -0.863545, 0.504272, -0.00790405, 0.475481, -0.0868719)
+shape = SubResource("BoxShape3D_jdcxl")
