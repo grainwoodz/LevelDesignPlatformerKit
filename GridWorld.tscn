@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://d4iclmf8bqd78"]
+[gd_scene load_steps=53 format=4 uid="uid://d4iclmf8bqd78"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_x2g0b"]
 [ext_resource type="Texture2D" uid="uid://cd7oyc56ehkx1" path="res://sprites/coin.png" id="2_rn7dd"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://ch0v5w4edf5y3" path="res://block_snow_large_slope_steep_narrow_2.tscn" id="27_k236f"]
 [ext_resource type="PackedScene" uid="uid://pfy2oqbr0v38" path="res://fence_straight_2.tscn" id="28_c1rv7"]
 [ext_resource type="PackedScene" uid="uid://dewj4t3rxebci" path="res://block_grass_overhang_low_large_2.tscn" id="32_l0586"]
+[ext_resource type="PackedScene" uid="uid://dhxok27jxvik8" path="res://objects/flag.tscn" id="32_mmmco"]
 [ext_resource type="PackedScene" uid="uid://e64a4omgpcs" path="res://models/core_models/coin.glb" id="33_m3myu"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7137t"]
@@ -1119,7 +1120,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0335693, 0.759186, 0.00866
 shape = SubResource("BoxShape3D_sdkow")
 
 [node name="button" parent="block-grass-overhang-long2/StaticBody3D" instance=ExtResource("16_imky1")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0319982, 4.02664, -19.5548)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0319982, 10.3065, -19.5548)
+visible = false
 
 [node name="Hangbridge" type="Node3D" parent="."]
 transform = Transform3D(0.6123, 0, -0.790625, 0, 1, 0, 0.790625, 0, 0.6123, -16.3511, 9.86446, 18.213)
@@ -1292,7 +1294,7 @@ node_b = NodePath("../../../RigidBody3D7")
 params/bias = 0.4
 
 [node name="RigidBody3D7" type="RigidBody3D" parent="Hangbridge"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0323429, 0.00704765, 6.83936)
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0.0319166, 0.00735664, 6.84175)
 axis_lock_angular_y = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hangbridge/RigidBody3D7"]
@@ -1546,6 +1548,9 @@ node_a = NodePath("..")
 node_b = NodePath("../../RigidBody3D16")
 params/bias = 0.7
 
+[node name="checkpoint" parent="Hangbridge" instance=ExtResource("16_2in1c")]
+transform = Transform3D(0.612301, 0, 0.790626, 0, 1, 0, -0.790626, 0, 0.612301, -0.166675, -0.410826, -1.83856)
+
 [node name="SecondPuzzle" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7844, 9.66321, 29.2336)
 
@@ -1589,6 +1594,12 @@ transform = Transform3D(1.68421, 0, -0.247982, 0, 1.70237, 0, 0.247982, 0, 1.684
 transform = Transform3D(1, 0, -4.02331e-07, 0, 1, 0, 4.02331e-07, 0, 1, 0, 0.101135, 0)
 shape = SubResource("BoxShape3D_1c2rg")
 
+[node name="fence-straight4" parent="SecondPuzzle/Supports/platform2" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(0.33616, -0.883586, -0.320363, -0.730203, -0.0313157, -0.679839, 0.591742, 0.463309, -0.656922, 0.0860329, -0.01472, -0.0231419)
+
+[node name="fence-straight5" parent="SecondPuzzle/Supports/platform2" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(-0.0872637, -0.921687, 0.373146, -0.758444, -0.180542, -0.623318, 0.643045, -0.33802, -0.684542, 0.38006, 0.0525522, 0.203104)
+
 [node name="platform3" parent="SecondPuzzle/Supports" instance=ExtResource("24_prvap")]
 transform = Transform3D(1.20736, 0, -1.20014, 0, 1.70237, 0, 1.20014, 0, 1.20736, -1.49834, 0.795368, 0.719694)
 
@@ -1597,6 +1608,12 @@ transform = Transform3D(1.20736, 0, -1.20014, 0, 1.70237, 0, 1.20014, 0, 1.20736
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SecondPuzzle/Supports/platform3/StaticBody3D"]
 transform = Transform3D(1, 0, -4.02331e-07, 0, 1, 0, 4.02331e-07, 0, 1, 0, 0.101135, 0)
 shape = SubResource("BoxShape3D_1c2rg")
+
+[node name="fence-straight4" parent="SecondPuzzle/Supports/platform3" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(0.323446, -0.817065, -0.473442, -0.918606, -0.156249, -0.35792, 0.218869, 0.55168, -0.802562, 0.121186, -0.158372, -0.116428)
+
+[node name="fence-straight5" parent="SecondPuzzle/Supports/platform3" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(-0.0908003, -0.970908, 0.213195, -0.940434, 0.0145527, -0.334261, 0.322022, -0.231268, -0.916066, 0.446724, -0.19935, 0.0693531)
 
 [node name="platform-falling" parent="SecondPuzzle/Supports" instance=ExtResource("25_65ytd")]
 transform = Transform3D(1.19912, 0, 0.0894681, 0, 1.20246, 0, -0.0894681, 0, 1.19912, -6.83788, 2.77595, -0.131384)
@@ -1730,6 +1747,24 @@ transform = Transform3D(-0.65677, -0.0693019, 1.56905, 0.149999, 1.69017, 0.1374
 transform = Transform3D(1, 0, -4.02331e-07, 0, 1, 0, 4.02331e-07, 0, 1, 0, 0.101135, 0)
 shape = SubResource("BoxShape3D_1c2rg")
 
+[node name="fence-straight4" parent="SecondPuzzle/Supports/platform8" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(-0.329736, 0.827341, 0.450711, -0.861653, -0.0716954, -0.49877, -0.381034, -0.553828, 0.737867, -0.144837, -0.150549, -0.0597229)
+
+[node name="fence-straight5" parent="SecondPuzzle/Supports/platform8" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(0.0864367, 0.965535, -0.237972, -0.871987, -0.0412376, -0.484042, -0.478044, 0.249803, 0.839901, -0.466574, -0.153571, -0.256315)
+
+[node name="fence-straight6" parent="SecondPuzzle/Supports/platform8" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(-0.348712, 0.791373, 0.498487, -0.861308, -0.0643474, -0.500365, -0.364564, -0.604937, 0.70534, -0.173027, -0.0884495, -0.792635)
+
+[node name="fence-straight7" parent="SecondPuzzle/Supports/platform8" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(0.0606136, 0.979476, -0.182518, -0.868927, -0.0375003, -0.489814, -0.487495, 0.188627, 0.85037, -0.506422, -0.0921049, -0.968716)
+
+[node name="fence-straight8" parent="SecondPuzzle/Supports/platform8" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(-0.378286, 0.723553, 0.574223, -0.861154, -0.0517631, -0.502086, -0.334172, -0.685676, 0.643846, -0.392594, -0.896368, -0.343405)
+
+[node name="fence-straight9" parent="SecondPuzzle/Supports/platform8" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(0.0158158, 0.994191, -0.0877196, -0.86396, -0.0302847, -0.499013, -0.499682, 0.0838316, 0.86003, -0.489913, -0.910069, -0.653591)
+
 [node name="platform9" parent="SecondPuzzle/Supports" instance=ExtResource("24_prvap")]
 transform = Transform3D(-1.00471, -0.0342257, -1.37384, -0.0973435, 1.69934, 0.0288541, 1.37082, 0.0955875, -1.00488, -2.24233, 5.81083, 1.63543)
 
@@ -1738,6 +1773,30 @@ transform = Transform3D(-1.00471, -0.0342257, -1.37384, -0.0973435, 1.69934, 0.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SecondPuzzle/Supports/platform9/StaticBody3D"]
 transform = Transform3D(1, 0, -4.02331e-07, 0, 1, 0, 4.02331e-07, 0, 1, 0, 0.101135, 0)
 shape = SubResource("BoxShape3D_1c2rg")
+
+[node name="fence-straight4" parent="SecondPuzzle/Supports/platform9" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(0.243006, 0.487459, -0.836476, -0.918606, -0.156249, -0.35792, -0.305727, 0.85693, 0.410562, -0.0514545, -0.158372, -0.0654278)
+
+[node name="fence-straight5" parent="SecondPuzzle/Supports/platform9" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(0.314119, -0.304974, -0.89704, -0.940434, 0.0145527, -0.334261, 0.115205, 0.950336, -0.282752, 0.158724, -0.19935, -0.375774)
+
+[node name="fence-straight6" parent="SecondPuzzle/Supports/platform9" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(0.243006, 0.487459, -0.836476, -0.918606, -0.156249, -0.35792, -0.305727, 0.85693, 0.410562, 0.177906, -0.955702, -0.278684)
+
+[node name="fence-straight7" parent="SecondPuzzle/Supports/platform9" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(0.314119, -0.304974, -0.89704, -0.940434, 0.0145527, -0.334261, 0.115205, 0.950336, -0.282752, 0.46167, -0.997982, -0.264094)
+
+[node name="fence-straight8" parent="SecondPuzzle/Supports/platform9" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(-0.0522691, 0.989526, -0.120269, -0.078204, -0.124133, -0.987338, -0.993736, -0.0422789, 0.0840274, 0.330523, -1.32925, -0.145944)
+
+[node name="fence-straight9" parent="SecondPuzzle/Supports/platform9" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(0.33395, 0.601456, -0.723248, -0.240766, -0.687255, -0.682695, -0.909323, 0.402854, -0.0848517, 0.199713, -1.03814, -0.346732)
+
+[node name="fence-straight10" parent="SecondPuzzle/Supports/platform9" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(0.93872, 0.172371, 0.292319, 0.182451, 0.468633, -0.862238, -0.286137, 0.864309, 0.409212, 0.747362, 0.366833, -0.0116024)
+
+[node name="fence-straight11" parent="SecondPuzzle/Supports/platform9" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(0.95718, -0.0535918, 0.278016, 0.248449, -0.311084, -0.915347, 0.135788, 0.94695, -0.284968, 0.8085, 0.57628, -0.319109)
 
 [node name="platform10" parent="SecondPuzzle/Supports" instance=ExtResource("24_prvap")]
 transform = Transform3D(-1.64874, -0.0874014, -0.41483, -0.0973435, 1.69934, 0.0288541, 0.412616, 0.0516659, -1.6508, -6.3204, 7.33687, 3.31546)
@@ -1757,6 +1816,12 @@ transform = Transform3D(0.0629114, 0.0324843, -1.70089, -0.0973435, 1.69934, 0.0
 transform = Transform3D(1, 0, -4.02331e-07, 0, 1, 0, 4.02331e-07, 0, 1, 0, 0.101135, 0)
 shape = SubResource("BoxShape3D_1c2rg")
 
+[node name="fence-straight4" parent="SecondPuzzle/Supports/platform11" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(-0.203244, 0.882426, 0.419972, -0.803319, 0.0934285, -0.585071, -0.556534, -0.457117, 0.691141, -0.0401745, -0.0308237, -0.054987)
+
+[node name="fence-straight5" parent="SecondPuzzle/Supports/platform11" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(0.21964, 0.934475, -0.273632, -0.763406, -0.00886028, -0.643034, -0.604426, 0.350767, 0.712738, -0.338379, -0.0241394, -0.285633)
+
 [node name="platform12" parent="SecondPuzzle/Supports" instance=ExtResource("24_prvap")]
 transform = Transform3D(0.0629114, 0.0324843, -1.70089, -0.0973435, 1.69934, 0.0288541, 1.69842, 0.0961932, 0.0646524, -7.98504, 7.78076, 7.08907)
 
@@ -1765,6 +1830,12 @@ transform = Transform3D(0.0629114, 0.0324843, -1.70089, -0.0973435, 1.69934, 0.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SecondPuzzle/Supports/platform12/StaticBody3D"]
 transform = Transform3D(1, 0, -4.02331e-07, 0, 1, 0, 4.02331e-07, 0, 1, 0, 0.101135, 0)
 shape = SubResource("BoxShape3D_1c2rg")
+
+[node name="fence-straight4" parent="SecondPuzzle/Supports/platform12" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(-0.540933, 0.130791, 0.828641, -0.830049, 0.0593831, -0.551226, -0.121525, -0.987789, 0.0765808, -0.172029, -0.0359354, -0.199049)
+
+[node name="fence-straight5" parent="SecondPuzzle/Supports/platform12" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(-0.338232, 0.824643, 0.44936, -0.797196, 0.000353877, -0.600698, -0.496425, -0.562426, 0.658483, -0.532307, -0.0386047, -0.0878887)
 
 [node name="platform13" parent="SecondPuzzle/Supports" instance=ExtResource("24_prvap")]
 transform = Transform3D(0.0629114, 0.0324843, -1.70089, -0.0973435, 1.69934, 0.0288541, 1.69842, 0.0961932, 0.0646524, -6.24135, 7.76687, 7.08907)
@@ -1775,6 +1846,12 @@ transform = Transform3D(0.0629114, 0.0324843, -1.70089, -0.0973435, 1.69934, 0.0
 transform = Transform3D(1, 0, -4.02331e-07, 0, 1, 0, 4.02331e-07, 0, 1, 0, 0.101135, 0)
 shape = SubResource("BoxShape3D_1c2rg")
 
+[node name="fence-straight4" parent="SecondPuzzle/Supports/platform13" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(-0.512624, -0.395437, 0.759742, -0.833816, 0.0280216, -0.54802, 0.195774, -0.916081, -0.344714, -0.0588722, -0.034503, 0.0986824)
+
+[node name="fence-straight5" parent="SecondPuzzle/Supports/platform13" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(-0.531514, 0.419248, 0.733544, -0.812779, -0.0170397, -0.579189, -0.230744, -0.905705, 0.350451, -0.311018, -0.0338573, 0.379019)
+
 [node name="platform14" parent="SecondPuzzle/Supports" instance=ExtResource("24_prvap")]
 transform = Transform3D(0.0629114, 0.0324843, -1.70089, -0.0973435, 1.69934, 0.0288541, 1.69842, 0.0961932, 0.0646524, -4.49559, 7.7406, 7.08907)
 
@@ -1783,6 +1860,12 @@ transform = Transform3D(0.0629114, 0.0324843, -1.70089, -0.0973435, 1.69934, 0.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SecondPuzzle/Supports/platform14/StaticBody3D"]
 transform = Transform3D(1, 0, -4.02331e-07, 0, 1, 0, 4.02331e-07, 0, 1, 0, 0.101135, 0)
 shape = SubResource("BoxShape3D_1c2rg")
+
+[node name="fence-straight4" parent="SecondPuzzle/Supports/platform14" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(-0.52329, -0.3446, 0.777033, -0.8339, 0.0312768, -0.547716, 0.164739, -0.936287, -0.304283, -0.0470161, -0.0324726, 0.0189362)
+
+[node name="fence-straight5" parent="SecondPuzzle/Supports/platform14" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(-0.518752, 0.468252, 0.71274, -0.811516, -0.0146451, -0.581023, -0.262104, -0.881411, 0.388299, -0.31415, -0.0324421, 0.285034)
 
 [node name="platform15" parent="SecondPuzzle/Supports" instance=ExtResource("24_prvap")]
 transform = Transform3D(0.0629114, 0.0324843, -1.70089, -0.0973435, 1.69934, 0.0288541, 1.69842, 0.0961932, 0.0646524, -2.7009, 7.72194, 7.08907)
@@ -1793,8 +1876,14 @@ transform = Transform3D(0.0629114, 0.0324843, -1.70089, -0.0973435, 1.69934, 0.0
 transform = Transform3D(1, 0, -4.02331e-07, 0, 1, 0, 4.02331e-07, 0, 1, 0, 0.101135, 0)
 shape = SubResource("BoxShape3D_1c2rg")
 
+[node name="fence-straight4" parent="SecondPuzzle/Supports/platform15" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(-0.103464, -0.976922, 0.176859, -0.81664, -0.0173758, -0.573722, 0.564583, -0.204161, -0.797449, -0.0656853, -0.0360975, 0.169451)
+
+[node name="fence-straight5" parent="SecondPuzzle/Supports/platform15" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(-0.463478, -0.497623, 0.730698, -0.818474, -0.0702957, -0.567027, 0.33414, -0.862432, -0.375396, 0.018055, -0.017684, 0.536625)
+
 [node name="platform16" parent="SecondPuzzle/Supports" instance=ExtResource("24_prvap")]
-transform = Transform3D(1.6987, 0.0963447, 0.056666, -0.0973435, 1.69934, 0.0288541, -0.0549366, -0.0320324, 1.70118, -2.46698, 8.72362, 5.78286)
+transform = Transform3D(1.6987, 0.0963447, 0.056666, -0.0973435, 1.69934, 0.0288541, -0.0549366, -0.0320324, 1.70118, -2.62868, 9.03257, 6.58574)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SecondPuzzle/Supports/platform16"]
 
@@ -1802,8 +1891,14 @@ transform = Transform3D(1.6987, 0.0963447, 0.056666, -0.0973435, 1.69934, 0.0288
 transform = Transform3D(1, 0, -4.02331e-07, 0, 1, 0, 4.02331e-07, 0, 1, 0, 0.101135, 0)
 shape = SubResource("BoxShape3D_1c2rg")
 
+[node name="fence-straight4" parent="SecondPuzzle/Supports/platform16" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(-0.544525, -0.190646, 0.81456, -0.833529, 0.0408202, -0.547651, 0.0712863, -0.978952, -0.181467, -0.040884, -0.0304012, -0.0822945)
+
+[node name="fence-straight5" parent="SecondPuzzle/Supports/platform16" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(-0.471858, 0.602929, 0.64046, -0.807352, -0.00838969, -0.586918, -0.349132, -0.795466, 0.49163, -0.347071, -0.031827, 0.137739)
+
 [node name="platform17" parent="SecondPuzzle/Supports" instance=ExtResource("24_prvap")]
-transform = Transform3D(1.58533, 0.101204, -0.612015, -0.0973435, 1.69934, 0.0288541, 0.612639, 0.00812534, 1.58829, -1.18702, 9.31474, 7.34959)
+transform = Transform3D(1.58533, 0.101204, -0.612015, -0.0973435, 1.69934, 0.0288541, 0.612639, 0.00812534, 1.58829, -4.31437, 10.6557, 7.02184)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SecondPuzzle/Supports/platform17"]
 
@@ -1811,8 +1906,14 @@ transform = Transform3D(1.58533, 0.101204, -0.612015, -0.0973435, 1.69934, 0.028
 transform = Transform3D(1, 0, -4.02331e-07, 0, 1, 0, 4.02331e-07, 0, 1, 0, 0.101135, 0)
 shape = SubResource("BoxShape3D_1c2rg")
 
+[node name="fence-straight4" parent="SecondPuzzle/Supports/platform17" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(-0.192937, 0.890938, 0.406651, -0.80265, 0.0936297, -0.585956, -0.561148, -0.440254, 0.69832, -0.0822639, -0.0339775, -0.0113583)
+
+[node name="fence-straight5" parent="SecondPuzzle/Supports/platform17" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(0.230788, 0.927675, -0.287255, -0.762825, -0.0095485, -0.643712, -0.600995, 0.368358, 0.706739, -0.376057, -0.0269423, -0.247593)
+
 [node name="platform-falling5" parent="SecondPuzzle/Supports" instance=ExtResource("25_65ytd")]
-transform = Transform3D(1.13877, 0, 0.386119, 0, 1.20246, 0, -0.386119, 0, 1.13877, -6.27378, 11.6462, 3.99598)
+transform = Transform3D(1.13877, 0, 0.386119, 0, 1.20246, 0, -0.386119, 0, 1.13877, -6.26696, 11.6462, 3.98655)
 
 [node name="Area3D" parent="SecondPuzzle/Supports/platform-falling5" index="0"]
 transform = Transform3D(0.825759, 0, -3.72529e-09, 0, 0.825759, 0, 3.72529e-09, 0, 0.825759, 0, 0.6, 0)
@@ -1827,7 +1928,7 @@ visible = false
 transform = Transform3D(1.76599, 0, -0.0937576, 0, 1.76848, 0, 0.0937576, 0, 1.76599, 0.0559559, 0.0424252, -0.105892)
 
 [node name="platform-falling6" parent="SecondPuzzle/Supports" instance=ExtResource("25_65ytd")]
-transform = Transform3D(1.15516, 0, -0.333901, 0, 1.20246, 0, 0.333901, 0, 1.15516, -3.45276, 12.8408, 3.85504)
+transform = Transform3D(1.15516, 0, -0.333901, 0, 1.20246, 0, 0.333901, 0, 1.15516, -3.44594, 12.8408, 3.84562)
 
 [node name="Area3D" parent="SecondPuzzle/Supports/platform-falling6" index="0"]
 transform = Transform3D(0.825759, 0, -3.72529e-09, 0, 0.825759, 0, 3.72529e-09, 0, 0.825759, 0, 0.6, 0)
@@ -1842,7 +1943,7 @@ visible = false
 transform = Transform3D(1.76599, 0, -0.0937576, 0, 1.76848, 0, 0.0937576, 0, 1.76599, 0.0559559, 0.0424252, -0.105892)
 
 [node name="platform-falling7" parent="SecondPuzzle/Supports" instance=ExtResource("25_65ytd")]
-transform = Transform3D(1.1999, 0, 0.0783094, 0, 1.20246, 0, -0.0783094, 0, 1.1999, -2.24876, 13.8485, 6.10904)
+transform = Transform3D(1.1999, 0, 0.0783094, 0, 1.20246, 0, -0.0783094, 0, 1.1999, -2.24194, 13.8485, 6.09961)
 
 [node name="Area3D" parent="SecondPuzzle/Supports/platform-falling7" index="0"]
 transform = Transform3D(0.825759, 0, -3.72529e-09, 0, 0.825759, 0, 3.72529e-09, 0, 0.825759, 0, 0.6, 0)
@@ -1856,53 +1957,47 @@ visible = false
 [node name="platform2" parent="SecondPuzzle/Supports/platform-falling7" instance=ExtResource("24_prvap")]
 transform = Transform3D(1.76599, 0, -0.0937576, 0, 1.76848, 0, 0.0937576, 0, 1.76599, 0.0559559, 0.0424252, -0.105892)
 
-[node name="platform-falling8" parent="SecondPuzzle/Supports" instance=ExtResource("25_65ytd")]
-transform = Transform3D(0.462524, 0, -1.10994, 0, 1.20246, 0, 1.10994, 0, 0.462524, -4.33735, 14.8205, 7.86891)
+[node name="platform18" parent="SecondPuzzle/Supports" instance=ExtResource("24_prvap")]
+transform = Transform3D(1.55152, 0.0770519, 0.696354, -0.0973435, 1.69934, 0.0288541, -0.693813, -0.0661156, 1.55316, -7.14493, 11.468, 6.57958)
 
-[node name="Area3D" parent="SecondPuzzle/Supports/platform-falling8" index="0"]
-transform = Transform3D(0.825759, 0, -3.72529e-09, 0, 0.825759, 0, 3.72529e-09, 0, 0.825759, 0, 0.6, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="SecondPuzzle/Supports/platform18"]
 
-[node name="CollisionShape3D" parent="SecondPuzzle/Supports/platform-falling8/Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0415344, 0, -0.324749)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SecondPuzzle/Supports/platform18/StaticBody3D"]
+transform = Transform3D(1, 0, -4.02331e-07, 0, 1, 0, 4.02331e-07, 0, 1, 0, 0.101135, 0)
+shape = SubResource("BoxShape3D_1c2rg")
 
-[node name="platform-falling2" parent="SecondPuzzle/Supports/platform-falling8" index="2"]
-visible = false
+[node name="fence-straight4" parent="SecondPuzzle/Supports/platform18" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(0.58097, 0.478816, -0.655416, -0.763153, 0.0476975, -0.641625, -0.276462, 0.87454, 0.393838, 0.028204, -0.0255327, -0.135892)
 
-[node name="platform2" parent="SecondPuzzle/Supports/platform-falling8" instance=ExtResource("24_prvap")]
-transform = Transform3D(1.76599, 0, -0.0937576, 0, 1.76848, 0, 0.0937576, 0, 1.76599, 0.0559559, 0.0424252, -0.105892)
+[node name="fence-straight5" parent="SecondPuzzle/Supports/platform18" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(0.63965, -0.32264, -0.695064, -0.752102, -0.0908803, -0.649957, 0.146801, 0.940215, -0.301339, 0.249584, 0.0121441, -0.438783)
 
-[node name="platform-falling9" parent="SecondPuzzle/Supports" instance=ExtResource("25_65ytd")]
-transform = Transform3D(1.18408, 0, -0.209401, 0, 1.20246, 0, 0.209401, 0, 1.18408, -5.9902, 10.9824, 7.31285)
+[node name="platform19" parent="SecondPuzzle/Supports" instance=ExtResource("24_prvap")]
+transform = Transform3D(1.68135, 0.0920622, 0.250322, -0.0973435, 1.69934, 0.0288541, -0.24832, -0.0428115, 1.68362, -3.92739, 14.865, 7.70417)
 
-[node name="Area3D" parent="SecondPuzzle/Supports/platform-falling9" index="0"]
-transform = Transform3D(0.825759, 0, -3.72529e-09, 0, 0.825759, 0, 3.72529e-09, 0, 0.825759, 0, 0.6, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="SecondPuzzle/Supports/platform19"]
 
-[node name="CollisionShape3D" parent="SecondPuzzle/Supports/platform-falling9/Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0415344, 0, -0.324749)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SecondPuzzle/Supports/platform19/StaticBody3D"]
+transform = Transform3D(1, 0, -4.02331e-07, 0, 1, 0, 4.02331e-07, 0, 1, 0, 0.101135, 0)
+shape = SubResource("BoxShape3D_1c2rg")
 
-[node name="platform-falling2" parent="SecondPuzzle/Supports/platform-falling9" index="2"]
-visible = false
+[node name="fence-straight4" parent="SecondPuzzle/Supports/platform19" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(-0.203244, 0.882426, 0.419972, -0.803319, 0.0934285, -0.585071, -0.556534, -0.457117, 0.691141, -0.10359, -0.0319901, -0.200321)
 
-[node name="platform2" parent="SecondPuzzle/Supports/platform-falling9" instance=ExtResource("24_prvap")]
-transform = Transform3D(1.76599, 0, -0.0937576, 0, 1.76848, 0, 0.0937576, 0, 1.76599, 0.0559559, 0.0424252, -0.105892)
+[node name="fence-straight5" parent="SecondPuzzle/Supports/platform19" instance=ExtResource("28_c1rv7")]
+transform = Transform3D(0.21964, 0.934475, -0.273632, -0.763406, -0.00886028, -0.643034, -0.604426, 0.350767, 0.712738, -0.401796, -0.0253048, -0.430967)
 
-[node name="platform-falling10" parent="SecondPuzzle/Supports" instance=ExtResource("25_65ytd")]
-transform = Transform3D(1.18408, 0, -0.209401, 0, 1.20246, 0, 0.209401, 0, 1.18408, -3.85345, 10.244, 7.73639)
+[node name="checkpoint" parent="SecondPuzzle/Supports/platform19" instance=ExtResource("16_2in1c")]
+transform = Transform3D(0.580161, -0.033589, -0.0856834, 0.0317668, 0.586371, -0.0147724, 0.086377, 0.0099563, 0.580946, -1.88554, -1.87883, -1.03222)
 
-[node name="Area3D" parent="SecondPuzzle/Supports/platform-falling10" index="0"]
-transform = Transform3D(0.825759, 0, -3.72529e-09, 0, 0.825759, 0, 3.72529e-09, 0, 0.825759, 0, 0.6, 0)
+[node name="flag" parent="SecondPuzzle/Supports/platform19" instance=ExtResource("32_mmmco")]
+transform = Transform3D(0.580161, -0.033589, -0.0856834, 0.0317668, 0.586371, -0.0147724, 0.086377, 0.0099563, 0.580946, -0.358267, -10.7689, -26.4439)
 
-[node name="CollisionShape3D" parent="SecondPuzzle/Supports/platform-falling10/Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0415344, 0, -0.324749)
-
-[node name="platform-falling2" parent="SecondPuzzle/Supports/platform-falling10" index="2"]
-visible = false
-
-[node name="platform2" parent="SecondPuzzle/Supports/platform-falling10" instance=ExtResource("24_prvap")]
-transform = Transform3D(1.76599, 0, -0.0937576, 0, 1.76848, 0, 0.0937576, 0, 1.76599, 0.0559559, 0.0424252, -0.105892)
+[node name="checkpoint2" parent="SecondPuzzle/Supports/platform19" instance=ExtResource("16_2in1c")]
+transform = Transform3D(0.580161, -0.033589, -0.0856834, 0.0317668, 0.586371, -0.0147724, 0.086377, 0.0099563, 0.580946, 13.364, -12.098, -23.1719)
 
 [node name="coin" parent="SecondPuzzle" instance=ExtResource("17_lp46v")]
-transform = Transform3D(1.60745, 0, 0, 0, 1.60745, 0, 0, 0, 1.60745, -4.14622, 16.0423, 5.92666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23225, 16.0423, 5.74572)
 
 [node name="ThirdPuzzle" type="Node3D" parent="."]
 
@@ -2015,13 +2110,13 @@ transform = Transform3D(2.27431, 0, 0, 0, 1.98978, 1.1015, 0, -1.1015, 1.98978, 
 [node name="Coins" type="Node3D" parent="."]
 
 [node name="coin" parent="Coins" instance=ExtResource("33_m3myu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7964, 5.15821, -6.45182)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7964, 5.15821, -6.46258)
 
 [node name="coin2" parent="Coins" instance=ExtResource("33_m3myu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7964, 5.15821, -6.93644)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7964, 5.15821, -6.98847)
 
 [node name="coin3" parent="Coins" instance=ExtResource("33_m3myu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7964, 5.15821, -7.47861)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7964, 5.15821, -7.50347)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Coins"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4882, 6.23558, -7)
@@ -2029,6 +2124,30 @@ light_color = Color(1, 0.878431, 0, 1)
 light_energy = 0.924
 shadow_enabled = true
 omni_range = 7.0
+
+[node name="checkpoint2" parent="." instance=ExtResource("16_2in1c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.94942, 1.5, 35.0303)
+
+[node name="checkpoint3" parent="." instance=ExtResource("16_2in1c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0524, 2.15019, 53.0035)
+
+[node name="checkpoint4" parent="." instance=ExtResource("16_2in1c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76336, 1.5, -36.4128)
+
+[node name="checkpoint5" parent="." instance=ExtResource("16_2in1c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0321, 1.5, -52.9755)
+
+[node name="checkpoint6" parent="." instance=ExtResource("16_2in1c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2124, 5, -46.8298)
+
+[node name="checkpoint7" parent="." instance=ExtResource("16_2in1c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.6637, 12.0567, 29.1573)
+
+[node name="checkpoint8" parent="." instance=ExtResource("16_2in1c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.8081, 13.5191, 37.9538)
+
+[node name="checkpoint9" parent="." instance=ExtResource("16_2in1c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.0574, 15.812, 30.949)
 
 [connection signal="coin_collected" from="Player" to="HUD" method="_on_coin_collected"]
 [connection signal="reached_goal" from="Player" to="HUD" method="_on_player_reached_goal"]
@@ -2041,6 +2160,3 @@ omni_range = 7.0
 [editable path="SecondPuzzle/Supports/platform-falling5"]
 [editable path="SecondPuzzle/Supports/platform-falling6"]
 [editable path="SecondPuzzle/Supports/platform-falling7"]
-[editable path="SecondPuzzle/Supports/platform-falling8"]
-[editable path="SecondPuzzle/Supports/platform-falling9"]
-[editable path="SecondPuzzle/Supports/platform-falling10"]
