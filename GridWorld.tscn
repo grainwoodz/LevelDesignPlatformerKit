@@ -1549,7 +1549,7 @@ node_b = NodePath("../../RigidBody3D16")
 params/bias = 0.7
 
 [node name="checkpoint" parent="Hangbridge" instance=ExtResource("16_2in1c")]
-transform = Transform3D(0.612301, 0, 0.790626, 0, 1, 0, -0.790626, 0, 0.612301, -0.166675, -0.410826, -1.83856)
+transform = Transform3D(0.612301, 0, 0.790626, 0, 1, 0, -0.790626, 0, 0.612301, -0.166674, -0.410826, -1.83856)
 
 [node name="SecondPuzzle" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7844, 9.66321, 29.2336)
